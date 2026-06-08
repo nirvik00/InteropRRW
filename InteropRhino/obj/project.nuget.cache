@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "BhkbKlOFSRg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\InteropRhino.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SahaN\\.nuget\\packages\\rhinocommon\\8.0.23304.9001\\rhinocommon.8.0.23304.9001.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}

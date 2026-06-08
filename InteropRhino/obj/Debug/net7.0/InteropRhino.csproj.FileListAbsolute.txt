@@ -1,0 +1,15 @@
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\bin\Debug\net7.0\InteropRhino.deps.json
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\bin\Debug\net7.0\InteropRhino.runtimeconfig.json
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\bin\Debug\net7.0\InteropRhino.rhp
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\bin\Debug\net7.0\InteropRhino.pdb
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.csproj.AssemblyReference.cache
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.AssemblyInfoInputs.cache
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.AssemblyInfo.cs
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.csproj.CoreCompileInputs.cache
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.sourcelink.json
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.rhp
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\refint\InteropRhino.rhp
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.pdb
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\InteropRhino.genruntimeconfig.cache
+C:\Users\SahaN\source\repos\InteropRRW\InteropRhino\obj\Debug\net7.0\ref\InteropRhino.rhp

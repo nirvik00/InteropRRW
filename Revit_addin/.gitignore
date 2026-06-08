@@ -1,0 +1,12 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Secrets — never commit service-account credentials (see M1)
+*serviceAccount*.json
+*firebase*adminsdk*.json

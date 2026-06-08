@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <TargetExt>.rhp</TargetExt>
+    <RootNamespace>SixCharis.RhinoReviewInterop</RootNamespace>
+    <AssemblyName>SixCharis.RhinoReviewInterop</AssemblyName>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**;obj\**" />
+    <EmbeddedResource Remove="bin\**;obj\**" />
+    <None Remove="bin\**;obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RhinoCommon">
+      <HintPath>C:\Program Files\Rhino 8\System\netcore\RhinoCommon.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="firebase.local.json" CopyToOutputDirectory="PreserveNewest" Condition="Exists('firebase.local.json')" />
+    <None Include="firebase.local.example.json" CopyToOutputDirectory="Never" />
+    <None Update="*firebase-adminsdk*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="serviceAccount*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="service-account*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Firestore" Version="4.2.0" />
+  </ItemGroup>
+</Project>
