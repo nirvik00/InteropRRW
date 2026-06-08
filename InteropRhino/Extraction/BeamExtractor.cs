@@ -1,55 +1,65 @@
+using System;
+using System.Collections.Generic;
+
+using Rhino;
+using Rhino.Commands;
 using Rhino.Geometry;
-using SixCharis.RhinoReviewInterop.Schema;
+using Rhino.Input;
+using Rhino.Input.Custom;
 
-namespace SixCharis.RhinoReviewInterop.Extraction;
+using InteropRhino.Schema;
 
-public static class BeamExtractor
+namespace InteropRhino.Extraction
 {
-    public static List<BeamElement> Extract(IEnumerable<LayerObject> objects, ExtractionContext context)
-    {
-        var beams = new List<BeamElement>();
 
-        foreach (var layerObject in objects)
+    public static class BeamExtractor
+    {
+        public static List<BeamElement> Extract(IEnumerable<LayerObject> objects, ExtractionContext context)
         {
-            var geometry = layerObject.RhinoObject.Geometry;
-            var box = geometry.GetBoundingBox(true);
-            if (!box.IsValid)
+            var beams = new List<BeamElement>();
+
+            foreach (var layerObject in objects)
             {
-                context.AddIssue("invalid_geometry", "Beam object has an invalid bounding box.", layerObject.RhinoObject, layerObject.LayerName);
-                continue;
+                var geometry = layerObject.RhinoObject.Geometry;
+                var box = geometry.GetBoundingBox(true);
+                if (!box.IsValid)
+                {
+                    context.AddIssue("invalid_geometry", "Beam object has an invalid bounding box.", layerObject.RhinoObject, layerObject.LayerName);
+                    continue;
+                }
+
+                var centerLine = geometry is Curve curve && GeometryConverters.TryGetCurveLine(curve, out var curveLine)
+                    ? curveLine
+                    : GeometryConverters.LongestBoundingBoxAxis(box);
+
+                var profile = ReadProfile(layerObject, box);
+
+                beams.Add(new BeamElement
+                {
+                    Id = context.StableElementId(layerObject.RhinoObject, layerObject.LayerName),
+                    Line = GeometryConverters.ToPointPair(centerLine),
+                    Xandy = profile
+                });
             }
 
-            var centerLine = geometry is Curve curve && GeometryConverters.TryGetCurveLine(curve, out var curveLine)
-                ? curveLine
-                : GeometryConverters.LongestBoundingBoxAxis(box);
-
-            var profile = ReadProfile(layerObject, box);
-
-            beams.Add(new BeamElement
-            {
-                Id = context.StableElementId(layerObject.RhinoObject, layerObject.LayerName),
-                Line = GeometryConverters.ToPointPair(centerLine),
-                Xandy = profile
-            });
+            return beams;
         }
 
-        return beams;
-    }
-
-    private static XandyData ReadProfile(LayerObject layerObject, BoundingBox box)
-    {
-        var width = GeometryConverters.ReadDouble(layerObject.RhinoObject, "profileWidth", "beamWidth", "width");
-        var depth = GeometryConverters.ReadDouble(layerObject.RhinoObject, "profileDepth", "beamDepth", "depth", "height");
-
-        if (width > 0 && depth > 0)
+        private static XandyData ReadProfile(LayerObject layerObject, BoundingBox box)
         {
-            return new XandyData
-            {
-                B = GeometryConverters.Round(width),
-                H = GeometryConverters.Round(depth)
-            };
-        }
+            var width = GeometryConverters.ReadDouble(layerObject.RhinoObject, "profileWidth", "beamWidth", "width");
+            var depth = GeometryConverters.ReadDouble(layerObject.RhinoObject, "profileDepth", "beamDepth", "depth", "height");
 
-        return GeometryConverters.ProfileFromBoundingBox(box);
+            if (width > 0 && depth > 0)
+            {
+                return new XandyData
+                {
+                    B = GeometryConverters.Round(width),
+                    H = GeometryConverters.Round(depth)
+                };
+            }
+
+            return GeometryConverters.ProfileFromBoundingBox(box);
+        }
     }
 }

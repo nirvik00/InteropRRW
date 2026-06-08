@@ -3,3 +3,7 @@ firebase.local.json
 firebase.local.example.json
 /bin
 bin/
+.vs/
+bin/
+debug/
+Debug/

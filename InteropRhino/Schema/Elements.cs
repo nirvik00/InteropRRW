@@ -1,54 +1,60 @@
-namespace SixCharis.RhinoReviewInterop.Schema;
+using System;
+using System.Collections.Generic;
 
-public abstract class InteropElement
+namespace InteropRhino.Schema
 {
-    public string Id { get; init; } = Guid.NewGuid().ToString("D");
-    public string Type { get; init; } = string.Empty;
-}
 
-public sealed class FloorElement : InteropElement
-{
-    public FloorElement()
+    public abstract class InteropElement
     {
-        Type = "floor";
+        public string Id { get; init;  } = Guid.NewGuid().ToString("D");
+        public string Type { get; protected set; } = string.Empty;
     }
 
-    public List<PointData> Polyline { get; init; } = [];
-    public double Thickness { get; init; }
-    public string Material { get; init; } = "concrete";
-}
-
-public sealed class WallElement : InteropElement
-{
-    public WallElement()
+    public sealed class FloorElement : InteropElement
     {
-        Type = "wall";
+        public FloorElement()
+        {
+            Type = "floor";
+        }
+
+        public List<PointData> Polyline { get; init;  } = [];
+        public double Thickness { get; init; }
+        public string Material { get; init;  } = "concrete";
     }
 
-    public List<PointData> Polyline { get; init; } = [];
-    public double Thickness { get; init; }
-    public double Height { get; init; }
-    public string Material { get; init; } = "concrete";
-}
-
-public sealed class BeamElement : InteropElement
-{
-    public BeamElement()
+    public sealed class WallElement : InteropElement
     {
-        Type = "beam";
+        public WallElement()
+        {
+            Type = "wall";
+        }
+
+        public List<PointData> Polyline { get; init; } = [];
+        public double Thickness { get; init;  }
+        public double Height { get; init;  }
+        public string Material { get; init;  } = "concrete";
     }
 
-    public List<PointData> Line { get; init; } = [];
-    public XandyData Xandy { get; init; } = new();
-}
-
-public sealed class ColumnElement : InteropElement
-{
-    public ColumnElement()
+    public sealed class BeamElement : InteropElement
     {
-        Type = "column";
+        public BeamElement()
+        {
+            Type = "beam";
+        }
+
+        public List<PointData> Line { get; init; } = [];
+        public XandyData Xandy { get; init; } 
     }
 
-    public List<PointData> Line { get; init; } = [];
-    public XandyData Xandy { get; init; } = new();
+    public sealed class ColumnElement : InteropElement
+    {
+        public ColumnElement()
+        {
+            Type = "column";
+        }
+
+        public List<PointData> Line { get; init;  } = [];
+        public XandyData Xandy { get; init;  }
+    }
+
 }

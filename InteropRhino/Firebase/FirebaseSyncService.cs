@@ -1,6 +1,7 @@
-using SixCharis.RhinoReviewInterop.Schema;
+using InteropRhino.Schema;
 
-namespace SixCharis.RhinoReviewInterop.Firebase;
+namespace InteropRhino.Firebase
+{
 
 public static class FirebaseSyncService
 {
@@ -13,3 +14,7 @@ public static class FirebaseSyncService
         return await client.PushLatestAsync(payload, cancellationToken);
     }
 }
+
+
+}
+

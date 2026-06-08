@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj": {}
+    "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj": {
+    "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj",
+        "projectUniqueName": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
         "projectName": "SixCharis.RhinoReviewInterop",
-        "projectPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj",
+        "projectPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
         "packagesPath": "C:\\Users\\SahaN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\obj\\",
+        "outputPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SahaN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows"
+          "net7.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
-            "targetAlias": "net8.0-windows",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {}
           }
         },
@@ -43,8 +43,8 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0-windows7.0": {
-          "targetAlias": "net8.0-windows",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "dependencies": {
             "Google.Cloud.Firestore": {
               "target": "Package",
@@ -62,12 +62,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311\\RuntimeIdentifierGraph.json"
         }
       }
     }

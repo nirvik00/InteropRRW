@@ -7,12 +7,28 @@
       "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:interoprhinocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\interoprhinoplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:interoprhinoplugin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\geometryconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\geometryconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\commandui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\commandui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firestoreautosyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firestoreautosyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\rhinoreviewsynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\rhinoreviewsynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\schema\\elements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:schema\\elements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\wallextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\wallextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\stopetestfirestoregeometrysynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\stopetestfirestoregeometrysynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\schema\\interoppayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,110 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\schema\\geometrydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:schema\\geometrydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\schema\\elements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:schema\\elements.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firestoresyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firestoresyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firestorerhinogeometryapplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firestorerhinogeometryapplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firestoreetestgeometrysyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firestoreetestgeometrysyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firestoreautosyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firestoreautosyncservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firebaserealtimedatabaseclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firebaserealtimedatabaseclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firebasepushresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firebasepushresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firebaseoptionsloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firebaseoptionsloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\firebase\\firebaseoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:firebase\\firebaseoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\wallextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\wallextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\rhinointeropextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\rhinointeropextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\layerobjectcollector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\layerobjectcollector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\jsonoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\jsonoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\geometryconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\geometryconverters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\floorextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\floorextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\columnextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\columnextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\extraction\\beamextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:extraction\\beamextractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\installrhinoreviewbuttonaliasescommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\installrhinoreviewbuttonaliasescommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\pushrhinoreviewdatacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\pushrhinoreviewdatacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\pushrhinoreviewdatatofirestorecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\pushrhinoreviewdatatofirestorecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\rhinoreviewetestsynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\rhinoreviewetestsynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\rhinoreviewpushcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\rhinoreviewpushcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\rhinoreviewsynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\rhinoreviewsynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\startetestfirestoregeometrysynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\startetestfirestoregeometrysynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\stopetestfirestoregeometrysynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\stopetestfirestoregeometrysynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|c:\\users\\sahan\\source\\repos\\interoprrw\\interoprhino\\commands\\stoprhinoreviewfirestorelivesynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1695076-01F1-4322-BBBB-C2CF8F627682}|InteropRhino.csproj|solutionrelative:commands\\stoprhinoreviewfirestorelivesynccommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -134,44 +46,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GeometryData.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\GeometryData.cs",
-              "RelativeDocumentMoniker": "Schema\\GeometryData.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\GeometryData.cs",
-              "RelativeToolTip": "Schema\\GeometryData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:37.656Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Elements.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\Elements.cs",
-              "RelativeDocumentMoniker": "Schema\\Elements.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\Elements.cs",
-              "RelativeToolTip": "Schema\\Elements.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:34.669Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FirestoreSyncService.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreSyncService.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirestoreSyncService.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreSyncService.cs",
-              "RelativeToolTip": "Firebase\\FirestoreSyncService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:32.862Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -180,40 +56,27 @@
               "RelativeDocumentMoniker": "InteropRhinoCommand.cs",
               "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\InteropRhinoCommand.cs",
               "RelativeToolTip": "InteropRhinoCommand.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAwC4AAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T17:03:00.674Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CommandUi.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\CommandUi.cs",
-              "RelativeDocumentMoniker": "Commands\\CommandUi.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\CommandUi.cs",
-              "RelativeToolTip": "Commands\\CommandUi.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:14:51.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InteropRhinoPlugin.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\InteropRhinoPlugin.cs",
-              "RelativeDocumentMoniker": "InteropRhinoPlugin.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\InteropRhinoPlugin.cs",
-              "RelativeToolTip": "InteropRhinoPlugin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:58.604Z",
+              "WhenOpened": "2026-06-08T04:01:55.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "RhinoReviewSyncCommand.cs",
+              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewSyncCommand.cs",
+              "RelativeDocumentMoniker": "Commands\\RhinoReviewSyncCommand.cs",
+              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewSyncCommand.cs",
+              "RelativeToolTip": "Commands\\RhinoReviewSyncCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T03:59:16.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "InteropPayload.cs",
               "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\InteropPayload.cs",
               "RelativeDocumentMoniker": "Schema\\InteropPayload.cs",
@@ -221,295 +84,92 @@
               "RelativeToolTip": "Schema\\InteropPayload.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:38.755Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FirestoreRhinoGeometryApplier.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreRhinoGeometryApplier.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirestoreRhinoGeometryApplier.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreRhinoGeometryApplier.cs",
-              "RelativeToolTip": "Firebase\\FirestoreRhinoGeometryApplier.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:31.552Z"
+              "WhenOpened": "2026-06-08T03:52:44.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "FirestoreETestGeometrySyncService.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreETestGeometrySyncService.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirestoreETestGeometrySyncService.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreETestGeometrySyncService.cs",
-              "RelativeToolTip": "Firebase\\FirestoreETestGeometrySyncService.cs",
+              "Title": "GeometryData.cs",
+              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\GeometryData.cs",
+              "RelativeDocumentMoniker": "Schema\\GeometryData.cs",
+              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\GeometryData.cs",
+              "RelativeToolTip": "Schema\\GeometryData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:30.602Z"
+              "WhenOpened": "2026-06-08T03:52:40.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FirestoreAutoSyncService.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreAutoSyncService.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirestoreAutoSyncService.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreAutoSyncService.cs",
-              "RelativeToolTip": "Firebase\\FirestoreAutoSyncService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Elements.cs",
+              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\Elements.cs",
+              "RelativeDocumentMoniker": "Schema\\Elements.cs",
+              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Schema\\Elements.cs",
+              "RelativeToolTip": "Schema\\Elements.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwCAAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:29.574Z"
+              "WhenOpened": "2026-06-08T03:52:32.914Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "FirebaseRealtimeDatabaseClient.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebaseRealtimeDatabaseClient.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirebaseRealtimeDatabaseClient.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebaseRealtimeDatabaseClient.cs",
-              "RelativeToolTip": "Firebase\\FirebaseRealtimeDatabaseClient.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:27.944Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FirebasePushResult.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebasePushResult.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirebasePushResult.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebasePushResult.cs",
-              "RelativeToolTip": "Firebase\\FirebasePushResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:26.34Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "FirebaseOptionsLoader.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebaseOptionsLoader.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirebaseOptionsLoader.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebaseOptionsLoader.cs",
-              "RelativeToolTip": "Firebase\\FirebaseOptionsLoader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:25.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "FirebaseOptions.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebaseOptions.cs",
-              "RelativeDocumentMoniker": "Firebase\\FirebaseOptions.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirebaseOptions.cs",
-              "RelativeToolTip": "Firebase\\FirebaseOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:21.136Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 5,
               "Title": "WallExtractor.cs",
               "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\WallExtractor.cs",
               "RelativeDocumentMoniker": "Extraction\\WallExtractor.cs",
               "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\WallExtractor.cs",
               "RelativeToolTip": "Extraction\\WallExtractor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAIAywCwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:17.103Z"
+              "WhenOpened": "2026-06-08T03:52:24.77Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RhinoInteropExtractor.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\RhinoInteropExtractor.cs",
-              "RelativeDocumentMoniker": "Extraction\\RhinoInteropExtractor.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\RhinoInteropExtractor.cs",
-              "RelativeToolTip": "Extraction\\RhinoInteropExtractor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "FirestoreAutoSyncService.cs",
+              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreAutoSyncService.cs",
+              "RelativeDocumentMoniker": "Firebase\\FirestoreAutoSyncService.cs",
+              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Firebase\\FirestoreAutoSyncService.cs",
+              "RelativeToolTip": "Firebase\\FirestoreAutoSyncService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:15.982Z"
-            },
+              "WhenOpened": "2026-06-08T03:44:35.568Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "LayerObjectCollector.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\LayerObjectCollector.cs",
-              "RelativeDocumentMoniker": "Extraction\\LayerObjectCollector.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\LayerObjectCollector.cs",
-              "RelativeToolTip": "Extraction\\LayerObjectCollector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:11.324Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "JsonOptions.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\JsonOptions.cs",
-              "RelativeDocumentMoniker": "Extraction\\JsonOptions.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\JsonOptions.cs",
-              "RelativeToolTip": "Extraction\\JsonOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:16:00.764Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "GeometryConverters.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\GeometryConverters.cs",
-              "RelativeDocumentMoniker": "Extraction\\GeometryConverters.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\GeometryConverters.cs",
-              "RelativeToolTip": "Extraction\\GeometryConverters.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:58.829Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "FloorExtractor.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\FloorExtractor.cs",
-              "RelativeDocumentMoniker": "Extraction\\FloorExtractor.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\FloorExtractor.cs",
-              "RelativeToolTip": "Extraction\\FloorExtractor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:50.623Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ColumnExtractor.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\ColumnExtractor.cs",
-              "RelativeDocumentMoniker": "Extraction\\ColumnExtractor.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\ColumnExtractor.cs",
-              "RelativeToolTip": "Extraction\\ColumnExtractor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:49.476Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "BeamExtractor.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\BeamExtractor.cs",
-              "RelativeDocumentMoniker": "Extraction\\BeamExtractor.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\BeamExtractor.cs",
-              "RelativeToolTip": "Extraction\\BeamExtractor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:48.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "PushRhinoReviewDataCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\PushRhinoReviewDataCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\PushRhinoReviewDataCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\PushRhinoReviewDataCommand.cs",
-              "RelativeToolTip": "Commands\\PushRhinoReviewDataCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:34.143Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "PushRhinoReviewDataToFirestoreCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\PushRhinoReviewDataToFirestoreCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\PushRhinoReviewDataToFirestoreCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\PushRhinoReviewDataToFirestoreCommand.cs",
-              "RelativeToolTip": "Commands\\PushRhinoReviewDataToFirestoreCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:28.924Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "RhinoReviewETestSyncCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewETestSyncCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\RhinoReviewETestSyncCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewETestSyncCommand.cs",
-              "RelativeToolTip": "Commands\\RhinoReviewETestSyncCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:28.245Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "RhinoReviewPushCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewPushCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\RhinoReviewPushCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewPushCommand.cs",
-              "RelativeToolTip": "Commands\\RhinoReviewPushCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:27.538Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "InstallRhinoReviewButtonAliasesCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\InstallRhinoReviewButtonAliasesCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\InstallRhinoReviewButtonAliasesCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\InstallRhinoReviewButtonAliasesCommand.cs",
-              "RelativeToolTip": "Commands\\InstallRhinoReviewButtonAliasesCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:13.004Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "RhinoReviewSyncCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewSyncCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\RhinoReviewSyncCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\RhinoReviewSyncCommand.cs",
-              "RelativeToolTip": "Commands\\RhinoReviewSyncCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:26.114Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "StartETestFirestoreGeometrySyncCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\StartETestFirestoreGeometrySyncCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\StartETestFirestoreGeometrySyncCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\StartETestFirestoreGeometrySyncCommand.cs",
-              "RelativeToolTip": "Commands\\StartETestFirestoreGeometrySyncCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:25.295Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 6,
               "Title": "StopETestFirestoreGeometrySyncCommand.cs",
               "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\StopETestFirestoreGeometrySyncCommand.cs",
               "RelativeDocumentMoniker": "Commands\\StopETestFirestoreGeometrySyncCommand.cs",
               "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\StopETestFirestoreGeometrySyncCommand.cs",
               "RelativeToolTip": "Commands\\StopETestFirestoreGeometrySyncCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:24.394Z"
+              "WhenOpened": "2026-06-08T03:44:29.514Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "StopRhinoReviewFirestoreLiveSyncCommand.cs",
-              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\StopRhinoReviewFirestoreLiveSyncCommand.cs",
-              "RelativeDocumentMoniker": "Commands\\StopRhinoReviewFirestoreLiveSyncCommand.cs",
-              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Commands\\StopRhinoReviewFirestoreLiveSyncCommand.cs",
-              "RelativeToolTip": "Commands\\StopRhinoReviewFirestoreLiveSyncCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "GeometryConverters.cs",
+              "DocumentMoniker": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\GeometryConverters.cs",
+              "RelativeDocumentMoniker": "Extraction\\GeometryConverters.cs",
+              "ToolTip": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\InteropRhino\\Extraction\\GeometryConverters.cs",
+              "RelativeToolTip": "Extraction\\GeometryConverters.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-07T18:15:22.547Z"
+              "WhenOpened": "2026-06-08T03:52:59.532Z",
+              "EditorCaption": ""
             }
           ]
         }

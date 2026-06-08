@@ -1,41 +1,44 @@
 using Rhino;
 using Rhino.Commands;
 using Rhino.UI;
-using SixCharis.RhinoReviewInterop.Extraction;
-using SixCharis.RhinoReviewInterop.Firebase;
+using InteropRhino.Extraction;
+using InteropRhino.Firebase;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
-public sealed class PushRhinoReviewDataToFirebaseCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "PushRhinoReviewDataToFirebase";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class PushRhinoReviewDataToFirebaseCommand : Command
     {
-        try
-        {
-            var payload = RhinoInteropExtractor.Extract(doc);
-            var result = FirebaseSyncService.PushLatestAsync(payload).GetAwaiter().GetResult();
+        public override string EnglishName => "PushRhinoReviewDataToFirebase";
 
-            var message =
-                $"Pushed Rhino Review payload to Firebase.\n\n" +
-                $"Database path: {result.DatabasePath}\n" +
-                $"Model ID: {result.ModelId}\n" +
-                $"Floors: {payload.Floors.Count}\n" +
-                $"Walls: {payload.Walls.Count}\n" +
-                $"Beams: {payload.Beams.Count}\n" +
-                $"Columns: {payload.Columns.Count}";
-
-            RhinoApp.WriteLine(message.Replace("\n", " "));
-            Dialogs.ShowTextDialog(message, "Firebase Push Complete");
-            return Result.Success;
-        }
-        catch (Exception exception)
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            var message = $"Firebase push failed:\n\n{exception.Message}";
-            RhinoApp.WriteLine(message.Replace("\n", " "));
-            Dialogs.ShowTextDialog(message, "Firebase Push Failed");
-            return Result.Failure;
+            try
+            {
+                var payload = RhinoInteropExtractor.Extract(doc);
+                var result = FirebaseSyncService.PushLatestAsync(payload).GetAwaiter().GetResult();
+
+                var message =
+                    $"Pushed Rhino Review payload to Firebase.\n\n" +
+                    $"Database path: {result.DatabasePath}\n" +
+                    $"Model ID: {result.ModelId}\n" +
+                    $"Floors: {payload.Floors.Count}\n" +
+                    $"Walls: {payload.Walls.Count}\n" +
+                    $"Beams: {payload.Beams.Count}\n" +
+                    $"Columns: {payload.Columns.Count}";
+
+                RhinoApp.WriteLine(message.Replace("\n", " "));
+                Dialogs.ShowTextDialog(message, "Firebase Push Complete");
+                return Result.Success;
+            }
+            catch (Exception exception)
+            {
+                var message = $"Firebase push failed:\n\n{exception.Message}";
+                RhinoApp.WriteLine(message.Replace("\n", " "));
+                Dialogs.ShowTextDialog(message, "Firebase Push Failed");
+                return Result.Failure;
+            }
         }
     }
+
 }
+

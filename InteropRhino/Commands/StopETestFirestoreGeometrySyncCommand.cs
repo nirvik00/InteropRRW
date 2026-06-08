@@ -1,28 +1,33 @@
+using System;
+using System.Threading.Tasks;
 using Rhino;
 using Rhino.Commands;
-using SixCharis.RhinoReviewInterop.Firebase;
+using InteropRhino.Firebase;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
-public sealed class StopETestFirestoreGeometrySyncCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "StopETestFirestoreGeometrySync";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class StopETestFirestoreGeometrySyncCommand : Command
     {
-        _ = Task.Run(async () =>
-        {
-            try
-            {
-                var status = await FirestoreETestGeometrySyncService.StopAsync().ConfigureAwait(false);
-                CommandUi.WriteLine($"Firestore e-test geometry sync stopped. Path: {status.CollectionPath}");
-            }
-            catch (Exception exception)
-            {
-                CommandUi.WriteLine($"Firestore e-test geometry sync failed to stop: {exception.Message}");
-            }
-        });
+        public override string EnglishName => "StopETestFirestoreGeometrySync";
 
-        return Result.Success;
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+        {
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    var status = await FirestoreETestGeometrySyncService.StopAsync().ConfigureAwait(false);
+                    CommandUi.WriteLine($"Firestore e-test geometry sync stopped. Path: {status.CollectionPath}");
+                }
+                catch (Exception exception)
+                {
+                    CommandUi.WriteLine($"Firestore e-test geometry sync failed to stop: {exception.Message}");
+                }
+            });
+
+            return Result.Success;
+        }
     }
+
 }
+

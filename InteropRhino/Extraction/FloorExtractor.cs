@@ -1,32 +1,40 @@
-using SixCharis.RhinoReviewInterop.Schema;
+using System;
+using System.Collections.Generic;
 
-namespace SixCharis.RhinoReviewInterop.Extraction;
+using Rhino.Geometry;
 
-public static class FloorExtractor
+using InteropRhino.Extraction;
+using InteropRhino.Schema;
+namespace InteropRhino.Extraction
 {
-    public static List<FloorElement> Extract(IEnumerable<LayerObject> objects, ExtractionContext context)
-    {
-        var floors = new List<FloorElement>();
 
-        foreach (var layerObject in objects)
+
+    public static class FloorExtractor
+    {
+        public static List<FloorElement> Extract(IEnumerable<LayerObject> objects, ExtractionContext context)
         {
-            var geometry = layerObject.RhinoObject.Geometry;
-            var box = geometry.GetBoundingBox(true);
-            if (!box.IsValid)
+            var floors = new List<FloorElement>();
+
+            foreach (var layerObject in objects)
             {
-                context.AddIssue("invalid_geometry", "Floor object has an invalid bounding box.", layerObject.RhinoObject, layerObject.LayerName);
-                continue;
+                var geometry = layerObject.RhinoObject.Geometry;
+                var box = geometry.GetBoundingBox(true);
+                if (!box.IsValid)
+                {
+                    context.AddIssue("invalid_geometry", "Floor object has an invalid bounding box.", layerObject.RhinoObject, layerObject.LayerName);
+                    continue;
+                }
+
+                floors.Add(new FloorElement
+                {
+                    Id = context.StableElementId(layerObject.RhinoObject, layerObject.LayerName),
+                    Polyline = GeometryConverters.GetFootprint(geometry, context.Tolerance),
+                    Thickness = GeometryConverters.Round(Math.Abs(box.Max.Z - box.Min.Z)),
+                    Material = GeometryConverters.ReadMaterial(layerObject.RhinoObject)
+                });
             }
 
-            floors.Add(new FloorElement
-            {
-                Id = context.StableElementId(layerObject.RhinoObject, layerObject.LayerName),
-                Polyline = GeometryConverters.GetFootprint(geometry, context.Tolerance),
-                Thickness = GeometryConverters.Round(Math.Abs(box.Max.Z - box.Min.Z)),
-                Material = GeometryConverters.ReadMaterial(layerObject.RhinoObject)
-            });
+            return floors;
         }
-
-        return floors;
     }
 }

@@ -1,3 +1,6 @@
-namespace SixCharis.RhinoReviewInterop.Firebase;
+using System;
 
-public sealed record FirebasePushResult(string ModelId, string DatabasePath);
+namespace InteropRhino.Firebase
+{
+    public sealed record FirebasePushResult(string ModelId, string DatabasePath);
+}

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MIRdfnQ0q54=",
+  "dgSpecHash": "t/wTtuTQJiU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj",
+  "projectFilePath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SahaN\\.nuget\\packages\\google.api.commonprotos\\2.17.0\\google.api.commonprotos.2.17.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\google.api.gax\\4.13.1\\google.api.gax.4.13.1.nupkg.sha512",
@@ -20,6 +20,7 @@
     "C:\\Users\\SahaN\\.nuget\\packages\\grpc.net.client\\2.71.0\\grpc.net.client.2.71.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\grpc.net.common\\2.71.0\\grpc.net.common.2.71.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.3\\microsoft.bcl.asyncinterfaces.10.0.3.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.bcl.memory\\10.0.2\\microsoft.bcl.memory.10.0.2.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512",
@@ -27,7 +28,12 @@
     "C:\\Users\\SahaN\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.2\\system.diagnostics.diagnosticsource.6.0.2.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\system.linq.asyncenumerable\\10.0.2\\system.linq.asyncenumerable.10.0.2.nupkg.sha512",
-    "C:\\Users\\SahaN\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512"
+    "C:\\Users\\SahaN\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.2\\system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.3\\system.threading.tasks.extensions.4.6.3.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.20\\microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.20\\microsoft.windowsdesktop.app.ref.7.0.20.nupkg.sha512",
+    "C:\\Users\\SahaN\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.20\\microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512"
   ],
   "logs": []
 }

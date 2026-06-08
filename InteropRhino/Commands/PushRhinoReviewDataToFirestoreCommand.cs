@@ -1,56 +1,59 @@
 using Rhino;
 using Rhino.Commands;
-using SixCharis.RhinoReviewInterop.Extraction;
-using SixCharis.RhinoReviewInterop.Firebase;
+using InteropRhino.Extraction;
+using InteropRhino.Firebase;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
-public sealed class PushRhinoReviewDataToFirestoreCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "PushRhinoReviewDataToFirestore";
 
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class PushRhinoReviewDataToFirestoreCommand : Command
     {
-        return PushInBackground(doc);
-    }
+        public override string EnglishName => "PushRhinoReviewDataToFirestore";
 
-    public static Result PushInBackground(RhinoDoc doc)
-    {
-        try
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            var payload = RhinoInteropExtractor.Extract(doc);
-            RhinoApp.WriteLine(
-                $"Preparing Firestore push in background: {payload.Floors.Count} floors, {payload.Walls.Count} walls, {payload.Beams.Count} beams, {payload.Columns.Count} columns.");
+            return PushInBackground(doc);
+        }
 
-            _ = Task.Run(async () =>
+        public static Result PushInBackground(RhinoDoc doc)
+        {
+            try
             {
-                try
-                {
-                    var result = await FirestoreSyncService.PushLatestAsync(payload);
-                    var message =
-                        $"Pushed Rhino Review payload to Firestore.\n\n" +
-                        $"Document path: {result.DocumentPath}\n" +
-                        $"Model ID: {result.ModelId}\n" +
-                        $"Floors: {result.Floors}\n" +
-                        $"Walls: {result.Walls}\n" +
-                        $"Beams: {result.Beams}\n" +
-                        $"Columns: {result.Columns}";
+                var payload = RhinoInteropExtractor.Extract(doc);
+                RhinoApp.WriteLine(
+                    $"Preparing Firestore push in background: {payload.Floors.Count} floors, {payload.Walls.Count} walls, {payload.Beams.Count} beams, {payload.Columns.Count} columns.");
 
-                    CommandUi.WriteLine(message);
-                }
-                catch (Exception exception)
+                _ = Task.Run(async () =>
                 {
-                    CommandUi.ShowTextDialog($"Firestore push failed:\n\n{exception.Message}", "Firestore Push Failed");
-                }
-            });
+                    try
+                    {
+                        var result = await FirestoreSyncService.PushLatestAsync(payload);
+                        var message =
+                            $"Pushed Rhino Review payload to Firestore.\n\n" +
+                            $"Document path: {result.DocumentPath}\n" +
+                            $"Model ID: {result.ModelId}\n" +
+                            $"Floors: {result.Floors}\n" +
+                            $"Walls: {result.Walls}\n" +
+                            $"Beams: {result.Beams}\n" +
+                            $"Columns: {result.Columns}";
 
-            return Result.Success;
-        }
-        catch (Exception exception)
-        {
-            var message = $"Firestore push failed:\n\n{exception.Message}";
-            RhinoApp.WriteLine(message.Replace("\n", " "));
-            return Result.Failure;
+                        CommandUi.WriteLine(message);
+                    }
+                    catch (Exception exception)
+                    {
+                        CommandUi.ShowTextDialog($"Firestore push failed:\n\n{exception.Message}", "Firestore Push Failed");
+                    }
+                });
+
+                return Result.Success;
+            }
+            catch (Exception exception)
+            {
+                var message = $"Firestore push failed:\n\n{exception.Message}";
+                RhinoApp.WriteLine(message.Replace("\n", " "));
+                return Result.Failure;
+            }
         }
     }
+
 }

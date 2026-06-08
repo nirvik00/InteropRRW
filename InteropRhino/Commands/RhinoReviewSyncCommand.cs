@@ -1,18 +1,22 @@
 using Rhino;
 using Rhino.Commands;
-using SixCharis.RhinoReviewInterop.Firebase;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
+using InteropRhino.Firebase;
 
-public sealed class RhinoReviewSyncCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "RhinoReviewSync";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class RhinoReviewSyncCommand : Command
     {
-        var status = FirestoreAutoSyncService.Toggle(doc);
-        var state = status.Enabled ? "enabled" : "disabled";
-        RhinoApp.WriteLine($"Rhino Review Firestore auto-sync {state}.");
-        return Result.Success;
+        public override string EnglishName => "RhinoReviewSync";
+
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+        {
+            var status = FirestoreAutoSyncService.Toggle(doc);
+            var state = status.Enabled ? "enabled" : "disabled";
+            RhinoApp.WriteLine($"Rhino Review Firestore auto-sync {state}.");
+            return Result.Success;
+        }
     }
+
 }
+

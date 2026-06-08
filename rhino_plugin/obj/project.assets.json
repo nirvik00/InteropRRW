@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {
+    "net7.0-windows7.0": {
       "Google.Api.CommonProtos/2.17.0": {
         "type": "package",
         "dependencies": {
@@ -230,12 +230,12 @@
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         },
         "compile": {
-          "lib/net8.0/Grpc.Net.Client.dll": {
+          "lib/net7.0/Grpc.Net.Client.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Grpc.Net.Client.dll": {
+          "lib/net7.0/Grpc.Net.Client.dll": {
             "related": ".pdb;.xml"
           }
         }
@@ -246,12 +246,12 @@
           "Grpc.Core.Api": "2.71.0"
         },
         "compile": {
-          "lib/net8.0/Grpc.Net.Common.dll": {
+          "lib/net7.0/Grpc.Net.Common.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Grpc.Net.Common.dll": {
+          "lib/net7.0/Grpc.Net.Common.dll": {
             "related": ".pdb;.xml"
           }
         }
@@ -267,6 +267,25 @@
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Microsoft.Bcl.Memory/10.0.2": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.1.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.Bcl.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.Bcl.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp2.0/Microsoft.Bcl.Memory.targets": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
@@ -333,12 +352,12 @@
       "System.Collections.Immutable/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net8.0/System.Collections.Immutable.dll": {
+          "lib/net7.0/System.Collections.Immutable.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Collections.Immutable.dll": {
+          "lib/net7.0/System.Collections.Immutable.dll": {
             "related": ".xml"
           }
         },
@@ -364,18 +383,23 @@
       },
       "System.Linq.AsyncEnumerable/10.0.2": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "10.0.2",
+          "Microsoft.Bcl.Memory": "10.0.2",
+          "System.Threading.Tasks.Extensions": "4.6.3"
+        },
         "compile": {
-          "lib/net8.0/System.Linq.AsyncEnumerable.dll": {
+          "lib/netstandard2.0/System.Linq.AsyncEnumerable.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Linq.AsyncEnumerable.dll": {
+          "lib/netstandard2.0/System.Linq.AsyncEnumerable.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/net8.0/_._": {}
+          "buildTransitive/netcoreapp2.0/System.Linq.AsyncEnumerable.targets": {}
         }
       },
       "System.Management/7.0.2": {
@@ -401,6 +425,27 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/_._": {}
+        },
+        "runtime": {
+          "lib/net7.0/_._": {}
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "System.Threading.Tasks.Extensions/4.6.3": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
         }
       }
     }
@@ -807,6 +852,37 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Bcl.Memory/10.0.2": {
+      "sha512": "KLJb/zKv+zvkeSJloY0WbGbqj6qY2Gxd2s4YhzzEhO65OLup5N0SmT97lnfxuiJnqroSkT6opzVfXYGZ3P3zdw==",
+      "type": "package",
+      "path": "microsoft.bcl.memory/10.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Bcl.Memory.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Bcl.Memory.targets",
+        "lib/net10.0/Microsoft.Bcl.Memory.dll",
+        "lib/net10.0/Microsoft.Bcl.Memory.xml",
+        "lib/net462/Microsoft.Bcl.Memory.dll",
+        "lib/net462/Microsoft.Bcl.Memory.xml",
+        "lib/net8.0/Microsoft.Bcl.Memory.dll",
+        "lib/net8.0/Microsoft.Bcl.Memory.xml",
+        "lib/net9.0/Microsoft.Bcl.Memory.dll",
+        "lib/net9.0/Microsoft.Bcl.Memory.xml",
+        "lib/netstandard2.0/Microsoft.Bcl.Memory.dll",
+        "lib/netstandard2.0/Microsoft.Bcl.Memory.xml",
+        "lib/netstandard2.1/Microsoft.Bcl.Memory.dll",
+        "lib/netstandard2.1/Microsoft.Bcl.Memory.xml",
+        "microsoft.bcl.memory.10.0.2.nupkg.sha512",
+        "microsoft.bcl.memory.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
       "sha512": "xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
       "type": "package",
@@ -1052,10 +1128,55 @@
         "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.1.2": {
+      "sha512": "2hBr6zdbIBTDE3EhK7NSVNdX58uTK6iHW/P/Axmm9sl1xoGSLqDvMtpecn226TNwHByFokYwJmt/aQQNlO5CRw==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/6.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Runtime.CompilerServices.Unsafe.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets",
+        "lib/net462/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net462/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net6.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/net7.0/_._",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec"
+      ]
+    },
+    "System.Threading.Tasks.Extensions/4.6.3": {
+      "sha512": "7sCiwilJLYbTZELaKnc7RecBBXWXA+xMLQWZKWawBxYjp6DBlSE3v9/UcvKBvr1vv2tTOhipiogM8rRmxlhrVA==",
+      "type": "package",
+      "path": "system.threading.tasks.extensions/4.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "buildTransitive/net461/System.Threading.Tasks.Extensions.targets",
+        "buildTransitive/net462/_._",
+        "lib/net462/System.Threading.Tasks.Extensions.dll",
+        "lib/net462/System.Threading.Tasks.Extensions.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll",
+        "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
+        "lib/netstandard2.1/_._",
+        "system.threading.tasks.extensions.4.6.3.nupkg.sha512",
+        "system.threading.tasks.extensions.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": [
+    "net7.0-windows7.0": [
       "Google.Cloud.Firestore >= 4.2.0"
     ]
   },
@@ -1065,26 +1186,26 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj",
+      "projectUniqueName": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
       "projectName": "SixCharis.RhinoReviewInterop",
-      "projectPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\RhinoReviewInterop.csproj",
+      "projectPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
       "packagesPath": "C:\\Users\\SahaN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino plugin\\obj\\",
+      "outputPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SahaN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net8.0-windows"
+        "net7.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0-windows7.0": {
-          "targetAlias": "net8.0-windows",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "projectReferences": {}
         }
       },
@@ -1101,8 +1222,8 @@
       "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
-      "net8.0-windows7.0": {
-        "targetAlias": "net8.0-windows",
+      "net7.0-windows7.0": {
+        "targetAlias": "net7.0-windows",
         "dependencies": {
           "Google.Cloud.Firestore": {
             "target": "Package",
@@ -1120,12 +1241,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311\\RuntimeIdentifierGraph.json"
       }
     }
   }

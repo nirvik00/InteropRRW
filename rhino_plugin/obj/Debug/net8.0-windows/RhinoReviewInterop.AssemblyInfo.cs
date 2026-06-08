@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SixCharis.RhinoReviewInterop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff9609a59996216997f94d3b5b06d7b48e0622fc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+195d96d664fdaee38e65952cefbcaf78ba91c554")]
 [assembly: System.Reflection.AssemblyProductAttribute("SixCharis.RhinoReviewInterop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SixCharis.RhinoReviewInterop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

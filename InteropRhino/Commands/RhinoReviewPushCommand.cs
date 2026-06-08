@@ -1,8 +1,8 @@
 using Rhino;
 using Rhino.Commands;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
+namespace InteropRhino.Commands
+{
 public sealed class RhinoReviewPushCommand : Command
 {
     public override string EnglishName => "RhinoReviewPush";
@@ -12,3 +12,6 @@ public sealed class RhinoReviewPushCommand : Command
         return PushRhinoReviewDataToFirestoreCommand.PushInBackground(doc);
     }
 }
+
+}
+

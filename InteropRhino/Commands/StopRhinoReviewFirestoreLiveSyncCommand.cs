@@ -1,36 +1,42 @@
 using Rhino;
 using Rhino.Commands;
-using SixCharis.RhinoReviewInterop.Firebase;
+using InteropRhino.Firebase;
+using System.Threading.Tasks;
+using System;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
 
-public sealed class StopRhinoReviewFirestoreLiveSyncCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "StopRhinoReviewFirestoreLiveSync";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class StopRhinoReviewFirestoreLiveSyncCommand : Command
     {
-        RhinoApp.WriteLine("Stopping Firestore live sync in background.");
+        public override string EnglishName => "StopRhinoReviewFirestoreLiveSync";
 
-        _ = Task.Run(async () =>
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            try
-            {
-                var stopped = await FirestoreSyncService.StopLatestListenerAsync();
-                var message = stopped
-                    ? "Stopped Firestore live sync."
-                    : "Firestore live sync was not running.";
+            RhinoApp.WriteLine("Stopping Firestore live sync in background.");
 
-                CommandUi.WriteLine(message);
-            }
-            catch (Exception exception)
+            _ = Task.Run(async () =>
             {
-                CommandUi.ShowTextDialog(
-                    $"Firestore live sync failed to stop:\n\n{exception.Message}",
-                    "Firestore Live Sync Failed");
-            }
-        });
+                try
+                {
+                    var stopped = await FirestoreSyncService.StopLatestListenerAsync();
+                    var message = stopped
+                        ? "Stopped Firestore live sync."
+                        : "Firestore live sync was not running.";
 
-        return Result.Success;
+                    CommandUi.WriteLine(message);
+                }
+                catch (Exception exception)
+                {
+                    CommandUi.ShowTextDialog(
+                        $"Firestore live sync failed to stop:\n\n{exception.Message}",
+                        "Firestore Live Sync Failed");
+                }
+            });
+
+            return Result.Success;
+        }
     }
+
 }
+

@@ -1,30 +1,33 @@
 using Rhino;
 using Rhino.Commands;
-using SixCharis.RhinoReviewInterop.Firebase;
+using InteropRhino.Firebase;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
-public sealed class RhinoReviewETestSyncCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "RhinoReviewETestSync";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class RhinoReviewETestSyncCommand : Command
     {
-        _ = Task.Run(async () =>
-        {
-            try
-            {
-                var status = await FirestoreETestGeometrySyncService.ToggleAsync().ConfigureAwait(false);
-                var state = status.Running ? "started" : "stopped";
-                var already = status.AlreadyRunning ? " already" : string.Empty;
-                CommandUi.WriteLine($"Firestore e-test geometry sync{already} {state}. Path: {status.CollectionPath}");
-            }
-            catch (Exception exception)
-            {
-                CommandUi.WriteLine($"Firestore e-test geometry sync failed: {exception.Message}");
-            }
-        });
+        public override string EnglishName => "RhinoReviewETestSync";
 
-        return Result.Success;
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+        {
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    var status = await FirestoreETestGeometrySyncService.ToggleAsync().ConfigureAwait(false);
+                    var state = status.Running ? "started" : "stopped";
+                    var already = status.AlreadyRunning ? " already" : string.Empty;
+                    CommandUi.WriteLine($"Firestore e-test geometry sync{already} {state}. Path: {status.CollectionPath}");
+                }
+                catch (Exception exception)
+                {
+                    CommandUi.WriteLine($"Firestore e-test geometry sync failed: {exception.Message}");
+                }
+            });
+
+            return Result.Success;
+        }
     }
+
 }
+

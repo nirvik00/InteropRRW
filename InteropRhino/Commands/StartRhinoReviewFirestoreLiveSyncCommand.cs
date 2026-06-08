@@ -1,36 +1,40 @@
+using System.Threading.Tasks;
+using System;
 using Rhino;
 using Rhino.Commands;
-using SixCharis.RhinoReviewInterop.Firebase;
+using InteropRhino.Firebase;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
-public sealed class StartRhinoReviewFirestoreLiveSyncCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "StartRhinoReviewFirestoreLiveSync";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class StartRhinoReviewFirestoreLiveSyncCommand : Command
     {
-        RhinoApp.WriteLine("Starting Firestore live sync in background.");
+        public override string EnglishName => "StartRhinoReviewFirestoreLiveSync";
 
-        _ = Task.Run(() =>
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            try
-            {
-                var status = FirestoreSyncService.StartLatestListenerAsync().GetAwaiter().GetResult();
-                var message = status.AlreadyRunning
-                    ? $"Firestore live sync is already running.\n\nDocument path: {status.DocumentPath}"
-                    : $"Started Firestore live sync.\n\nDocument path: {status.DocumentPath}";
+            RhinoApp.WriteLine("Starting Firestore live sync in background.");
 
-                CommandUi.WriteLine(message);
-            }
-            catch (Exception exception)
+            _ = Task.Run(() =>
             {
-                CommandUi.ShowTextDialog(
-                    $"Firestore live sync failed to start:\n\n{exception.Message}",
-                    "Firestore Live Sync Failed");
-            }
-        });
+                try
+                {
+                    var status = FirestoreSyncService.StartLatestListenerAsync().GetAwaiter().GetResult();
+                    var message = status.AlreadyRunning
+                        ? $"Firestore live sync is already running.\n\nDocument path: {status.DocumentPath}"
+                        : $"Started Firestore live sync.\n\nDocument path: {status.DocumentPath}";
 
-        return Result.Success;
+                    CommandUi.WriteLine(message);
+                }
+                catch (Exception exception)
+                {
+                    CommandUi.ShowTextDialog(
+                        $"Firestore live sync failed to start:\n\n{exception.Message}",
+                        "Firestore Live Sync Failed");
+                }
+            });
+
+            return Result.Success;
+        }
     }
+
 }

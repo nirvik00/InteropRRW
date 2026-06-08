@@ -1,28 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
   <PropertyGroup>
-    <!-- Select the framework(s) you wish to target.
-        Rhino 6: net45
-        Rhino 7: net48
-        Rhino 8 Windows: net48, net7.0, net7.0-windows, net7.0-windows10.0.22000.0, etc
-        Rhino 8 Mac: net7.0, net7.0-macos, net7.0-macos12.0, etc
-    -->
-    <TargetFrameworks>net7.0;net48</TargetFrameworks>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <TargetExt>.rhp</TargetExt>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <NoWarn>NU1701</NoWarn>
   </PropertyGroup>
-  
+
   <PropertyGroup>
-    <!-- Specifies information for Assembly and Yak -->
     <Version>1.0</Version>
     <Title>InteropRhino</Title>
     <Company>InteropRhino Authors</Company>
     <Description>Description of InteropRhino</Description>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="RhinoCommon" Version="8.0.23304.9001" ExcludeAssets="runtime" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="4.2.0" />
+    <PackageReference Include="RhinoCommon" Version="8.15.24267.1001" ExcludeAssets="runtime" />
   </ItemGroup>
-  
 </Project>

@@ -2,23 +2,26 @@ using System.Text.Json;
 using Rhino;
 using Rhino.Commands;
 using Rhino.UI;
-using SixCharis.RhinoReviewInterop.Extraction;
+using InteropRhino.Extraction;
 
-namespace SixCharis.RhinoReviewInterop.Commands;
-
-public sealed class PushRhinoReviewDataCommand : Command
+namespace InteropRhino.Commands
 {
-    public override string EnglishName => "PushRhinoReviewData";
-
-    protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+    public sealed class PushRhinoReviewDataCommand : Command
     {
-        var payload = RhinoInteropExtractor.Extract(doc);
-        var json = JsonSerializer.Serialize(payload, JsonOptions.Pretty);
+        public override string EnglishName => "PushRhinoReviewData";
 
-        Dialogs.ShowTextDialog(json, "Rhino Review Interop Payload");
-        RhinoApp.WriteLine(
-            $"Rhino Review payload prepared: {payload.Floors.Count} floors, {payload.Walls.Count} walls, {payload.Beams.Count} beams, {payload.Columns.Count} columns.");
+        protected override Result RunCommand(RhinoDoc doc, RunMode mode)
+        {
+            var payload = RhinoInteropExtractor.Extract(doc);
+            var json = JsonSerializer.Serialize(payload, JsonOptions.Pretty);
 
-        return Result.Success;
+            Dialogs.ShowTextDialog(json, "Rhino Review Interop Payload");
+            RhinoApp.WriteLine(
+                $"Rhino Review payload prepared: {payload.Floors.Count} floors, {payload.Walls.Count} walls, {payload.Beams.Count} beams, {payload.Columns.Count} columns.");
+
+            return Result.Success;
+        }
     }
+
 }
+

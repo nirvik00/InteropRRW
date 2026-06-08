@@ -1,11 +1,17 @@
 using Rhino;
 using Rhino.DocObjects;
 using Rhino.Geometry;
+
+using System.Text;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Security.Cryptography;
-using System.Text;
+using InteropRhino.Extraction;
+using System.Linq;
+using System;
 
-namespace SixCharis.RhinoReviewInterop.Firebase;
+namespace InteropRhino.Firebase
+{
 
 public static class FirestoreRhinoGeometryApplier
 {
@@ -665,3 +671,5 @@ internal sealed record RemoteLine(Point3d Start, Point3d End);
 internal sealed record RemoteXandy(double B, double H);
 
 public sealed record FirestoreApplyResult(int Created, int Updated, int Deleted, int Skipped);
+
+}
