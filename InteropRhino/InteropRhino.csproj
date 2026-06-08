@@ -18,6 +18,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="firebase.local.json" CopyToOutputDirectory="PreserveNewest"
+          Condition="Exists('firebase.local.json')" />
+    <None Update="*firebase-adminsdk*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="serviceAccount*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Cloud.Firestore" Version="4.2.0" />
     <PackageReference Include="RhinoCommon" Version="8.15.24267.1001" ExcludeAssets="runtime" />
   </ItemGroup>
