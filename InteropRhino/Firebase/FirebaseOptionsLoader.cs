@@ -5,6 +5,9 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json;
 
+
+
+
 namespace InteropRhino.Firebase
 {
 
@@ -114,7 +117,7 @@ namespace InteropRhino.Firebase
                     .Concat(Directory.EnumerateFiles(directory, "service-account*.json", SearchOption.TopDirectoryOnly))
                     .FirstOrDefault();
 
-                if (match is not null)
+                if (match != null)
                 {
                     return match;
                 }
@@ -124,7 +127,7 @@ namespace InteropRhino.Firebase
                 "Firestore service account key was not found. Place the ignored *firebase-adminsdk*.json file beside firebase.local.json or beside the loaded .rhp.");
         }
 
-        private static string? FindConfigPath()
+        private static string FindConfigPath()
         {
             foreach (var directory in CandidateDirectories())
             {

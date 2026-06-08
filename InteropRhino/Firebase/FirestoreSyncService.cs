@@ -4,6 +4,11 @@ using Google.Cloud.Firestore;
 using Rhino;
 using InteropRhino.Extraction;
 using InteropRhino.Schema;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace InteropRhino.Firebase
 {

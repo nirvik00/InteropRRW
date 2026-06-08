@@ -2,6 +2,8 @@ using Rhino;
 using Rhino.Commands;
 using InteropRhino.Extraction;
 using InteropRhino.Firebase;
+using System.Threading.Tasks;
+using System;
 
 namespace InteropRhino.Commands
 {

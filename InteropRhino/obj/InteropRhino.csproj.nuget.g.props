@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\SahaN\.nuget\packages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net7.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)rhinocommon\8.31.26126.13431\buildTransitive\net7.0\RhinoCommon.props" Condition="Exists('$(NuGetPackageRoot)rhinocommon\8.31.26126.13431\buildTransitive\net7.0\RhinoCommon.props')" />
+  </ImportGroup>
 </Project>

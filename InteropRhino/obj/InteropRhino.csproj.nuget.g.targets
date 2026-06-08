@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)rhinocommon\8.15.25013.13001\build\net48\RhinoCommon.targets" Condition="Exists('$(NuGetPackageRoot)rhinocommon\8.15.25013.13001\build\net48\RhinoCommon.targets')" />
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net7.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.bcl.memory\10.0.2\buildTransitive\netcoreapp2.0\Microsoft.Bcl.Memory.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.bcl.memory\10.0.2\buildTransitive\netcoreapp2.0\Microsoft.Bcl.Memory.targets')" />
+    <Import Project="$(NuGetPackageRoot)system.linq.asyncenumerable\10.0.2\buildTransitive\netcoreapp2.0\System.Linq.AsyncEnumerable.targets" Condition="Exists('$(NuGetPackageRoot)system.linq.asyncenumerable\10.0.2\buildTransitive\netcoreapp2.0\System.Linq.AsyncEnumerable.targets')" />
+    <Import Project="$(NuGetPackageRoot)rhinocommon\8.31.26126.13431\buildTransitive\net7.0\RhinoCommon.targets" Condition="Exists('$(NuGetPackageRoot)rhinocommon\8.31.26126.13431\buildTransitive\net7.0\RhinoCommon.targets')" />
   </ImportGroup>
 </Project>
