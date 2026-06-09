@@ -1,47 +1,85 @@
 using Autodesk.Revit.UI;
-using Google.Cloud.Firestore;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace CharisRevitConnector;
-
-/// <summary>
-/// Realtime listener on the single layered document (rhinoReviewV2/test-model).
-/// Each snapshot is the full desired model state. The callback runs on a
-/// background thread: it parses the arrays into per-family element lists, hands
-/// the complete snapshot to the apply handler, and raises the ExternalEvent.
-/// Snapshots we authored (writerInstanceId == ours) are ignored to avoid loops.
-/// </summary>
-internal sealed class DocumentListener
+namespace CharisRevitConnector
 {
-    private readonly FirestoreDb _db;
-    private readonly IReadOnlyList<IFamilyHandler> _handlers;
-    private readonly SyncEventHandler _sink;
-    private readonly ExternalEvent _externalEvent;
-    private FirestoreChangeListener? _listener;
-
-    public DocumentListener(FirestoreDb db, IReadOnlyList<IFamilyHandler> handlers,
-                            SyncEventHandler sink, ExternalEvent externalEvent)
+    internal sealed class DocumentListener
     {
-        _db = db;
-        _handlers = handlers;
-        _sink = sink;
-        _externalEvent = externalEvent;
-    }
+        private readonly FirebaseConnection _connection;
+        private readonly IEnumerable<IFamilyHandler> _handlers;
+        private readonly SyncEventHandler _sink;
+        private readonly ExternalEvent _externalEvent;
+        private CancellationTokenSource _cts;
+        private string _lastUpdateTime;
 
-    public void Start()
-    {
-        DocumentReference docRef = _db.Collection(Config.CollectionId).Document(Config.DocumentId);
-        _listener = docRef.Listen(snap =>
+        public DocumentListener(FirebaseConnection connection, IEnumerable<IFamilyHandler> handlers,
+                                SyncEventHandler sink, ExternalEvent externalEvent)
         {
-            if (!snap.Exists)
+            _connection = connection;
+            _handlers = handlers;
+            _sink = sink;
+            _externalEvent = externalEvent;
+        }
+
+        public void Start()
+        {
+            _cts = new CancellationTokenSource();
+            Task.Run(() => PollLoopAsync(_cts.Token));
+        }
+
+        public async Task StopAsync()
+        {
+            if (_cts != null)
             {
-                Log.Info($"{Config.CollectionId}/{Config.DocumentId} does not exist yet.");
-                return;
+                _cts.Cancel();
+                _cts = null;
             }
+            await Task.CompletedTask;
+        }
 
-            IReadOnlyDictionary<string, object> data = snap.ToDictionary();
+        private async Task PollLoopAsync(CancellationToken cancellationToken)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                try
+                {
+                    JObject doc = await _connection.GetDocumentAsync(
+                        Config.CollectionId, Config.DocumentId, cancellationToken);
 
-            // Ignore only the echoes of writes WE issued this session (by op-id),
-            // not the initial state — even if we were the last writer.
+                    string updateTime = doc["updateTime"]?.Value<string>();
+                    if (updateTime != null && updateTime != _lastUpdateTime)
+                    {
+                        _lastUpdateTime = updateTime;
+                        ProcessSnapshot(doc);
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("DocumentListener poll failed", ex);
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken)
+                    .ContinueWith(_ => { }); // swallow cancellation
+            }
+        }
+
+        private void ProcessSnapshot(JObject doc)
+        {
+            JObject fields = doc["fields"] as JObject;
+            if (fields == null)
+                return;
+
+            var data = ParseFields(fields);
+
             if (WriteTracker.ConsumeIfOurs(FirestoreParse.Get(data, "writerOperationId") as string))
                 return;
 
@@ -63,20 +101,44 @@ internal sealed class DocumentListener
                 snapshot[handler.Category] = list;
             }
 
-            Log.Info($"Snapshot from {Config.CollectionId}/{Config.DocumentId}: "
-                     + string.Join(", ", snapshot.Select(kv => $"{kv.Key}={kv.Value.Count}")) + ".");
+            Log.Info("Snapshot from " + Config.CollectionId + "/" + Config.DocumentId + ": "
+                + string.Join(", ", snapshot.Select(kv => kv.Key + "=" + kv.Value.Count)) + ".");
 
             _sink.SetPending(snapshot);
             _externalEvent.Raise();
-        });
-    }
+        }
 
-    public async Task StopAsync()
-    {
-        if (_listener is not null)
+        private static Dictionary<string, object> ParseFields(JObject fields)
         {
-            await _listener.StopAsync();
-            _listener = null;
+            var result = new Dictionary<string, object>();
+            foreach (var prop in fields.Properties())
+                result[prop.Name] = ParseValue(prop.Value as JObject);
+            return result;
+        }
+
+        private static object ParseValue(JObject valueObj)
+        {
+            if (valueObj == null) return null;
+            if (valueObj["stringValue"] != null) return valueObj["stringValue"].Value<string>();
+            if (valueObj["integerValue"] != null) return valueObj["integerValue"].Value<long>();
+            if (valueObj["doubleValue"] != null) return valueObj["doubleValue"].Value<double>();
+            if (valueObj["booleanValue"] != null) return valueObj["booleanValue"].Value<bool>();
+            if (valueObj["nullValue"] != null) return null;
+            if (valueObj["mapValue"] != null)
+            {
+                var mapFields = valueObj["mapValue"]["fields"] as JObject;
+                return mapFields != null ? ParseFields(mapFields) : new Dictionary<string, object>();
+            }
+            if (valueObj["arrayValue"] != null)
+            {
+                var values = valueObj["arrayValue"]["values"] as JArray;
+                var list = new List<object>();
+                if (values != null)
+                    foreach (var item in values)
+                        list.Add(ParseValue(item as JObject));
+                return list;
+            }
+            return null;
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t/wTtuTQJiU=",
+  "dgSpecHash": "37pKiVfUDTg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
+  "projectFilePath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\deprecated_rhino_plugin\\RhinoReviewInterop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SahaN\\.nuget\\packages\\google.api.commonprotos\\2.17.0\\google.api.commonprotos.2.17.0.nupkg.sha512",
     "C:\\Users\\SahaN\\.nuget\\packages\\google.api.gax\\4.13.1\\google.api.gax.4.13.1.nupkg.sha512",

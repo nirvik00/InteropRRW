@@ -1186,11 +1186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
+      "projectUniqueName": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\deprecated_rhino_plugin\\RhinoReviewInterop.csproj",
       "projectName": "SixCharis.RhinoReviewInterop",
-      "projectPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\RhinoReviewInterop.csproj",
+      "projectPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\deprecated_rhino_plugin\\RhinoReviewInterop.csproj",
       "packagesPath": "C:\\Users\\SahaN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\rhino_plugin\\obj\\",
+      "outputPath": "C:\\Users\\SahaN\\source\\repos\\InteropRRW\\deprecated_rhino_plugin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SahaN\\AppData\\Roaming\\NuGet\\NuGet.Config",

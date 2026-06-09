@@ -1,111 +1,155 @@
-using Google.Cloud.Firestore;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace CharisRevitConnector;
-
-/// <summary>
-/// Writes Revit-side changes back into the single layered document via
-/// read-modify-write on one array at a time. Writes are serialized (so two edits
-/// don't clobber each other) and fire-and-forget (the Revit thread is never
-/// blocked). Every write stamps our writerInstanceId so our own echoes are
-/// ignored by the listener.
-/// </summary>
-internal sealed class DocumentWriter
+namespace CharisRevitConnector
 {
-    private readonly FirestoreDb _db;
-    private readonly IReadOnlyDictionary<ElementCategory, IFamilyHandler> _handlers;
-    private readonly SemaphoreSlim _gate = new(1, 1);
-
-    public DocumentWriter(FirestoreDb db, IReadOnlyDictionary<ElementCategory, IFamilyHandler> handlers)
+    internal sealed class DocumentWriter
     {
-        _db = db;
-        _handlers = handlers;
-    }
+        private readonly FirebaseConnection _connection;
+        private readonly IReadOnlyDictionary<ElementCategory, IFamilyHandler> _handlers;
+        private readonly SemaphoreSlim _gate = new SemaphoreSlim(1, 1);
 
-    public void PushElement(ElementState state)
-    {
-        if (!_handlers.TryGetValue(state.Category, out IFamilyHandler? handler))
-            return;
-
-        Dictionary<string, object> entry = handler.ToFirestore(state);
-        string arrayKey = handler.ArrayKey;
-        string id = state.Id;
-
-        FireAndForget(async () =>
+        public DocumentWriter(FirebaseConnection connection, IReadOnlyDictionary<ElementCategory, IFamilyHandler> handlers)
         {
-            List<object> list = await ReadArrayAsync(arrayKey);
-            int idx = list.FindIndex(m => IdOf(m) == id);
-            if (idx >= 0) list[idx] = entry; else list.Add(entry);
-            await WriteArrayAsync(arrayKey, list);
-        }, $"push {state.Category} {id}");
-    }
-
-    public void DeleteElement(ElementCategory category, string id)
-    {
-        if (!_handlers.TryGetValue(category, out IFamilyHandler? handler))
-            return;
-
-        string arrayKey = handler.ArrayKey;
-        FireAndForget(async () =>
-        {
-            List<object> list = await ReadArrayAsync(arrayKey);
-            int removed = list.RemoveAll(m => IdOf(m) == id);
-            if (removed > 0)
-                await WriteArrayAsync(arrayKey, list);
-        }, $"delete {category} {id}");
-    }
-
-    // ---- internals ------------------------------------------------------
-
-    private DocumentReference Doc => _db.Collection(Config.CollectionId).Document(Config.DocumentId);
-
-    private async Task<List<object>> ReadArrayAsync(string arrayKey)
-    {
-        DocumentSnapshot snap = await Doc.GetSnapshotAsync();
-        if (snap.Exists && snap.ToDictionary() is { } data
-            && data.TryGetValue(arrayKey, out object? v) && v is IEnumerable<object> arr)
-        {
-            return arr.ToList();
+            _connection = connection;
+            _handlers = handlers;
         }
-        return new List<object>();
-    }
 
-    private Task WriteArrayAsync(string arrayKey, List<object> list)
-    {
-        string operationId = Guid.NewGuid().ToString();
-        WriteTracker.Remember(operationId); // so the listener ignores this write's echo
-
-        var update = new Dictionary<string, object>
+        public void PushElement(ElementState state)
         {
-            [arrayKey] = list,
-            ["writerInstanceId"] = Config.WriterInstanceId,
-            ["writerOperationId"] = operationId,
-            ["updatedAtUtc"] = Timestamp.FromDateTime(DateTime.UtcNow),
-            ["schemaVersion"] = Config.SchemaVersion,
-        };
-        return Doc.SetAsync(update, SetOptions.MergeAll);
-    }
+            if (!_handlers.TryGetValue(state.Category, out IFamilyHandler handler))
+                return;
 
-    private static string? IdOf(object item) =>
-        item is IReadOnlyDictionary<string, object> m && m.TryGetValue("id", out object? v) ? v as string : null;
+            Dictionary<string, object> entry = handler.ToFirestore(state);
+            string arrayKey = handler.ArrayKey;
+            string id = state.Id;
 
-    private void FireAndForget(Func<Task> action, string what)
-    {
-        _ = Task.Run(async () =>
+            FireAndForget(async () =>
+            {
+                List<object> list = await ReadArrayAsync(arrayKey);
+                int idx = list.FindIndex(m => IdOf(m) == id);
+                if (idx >= 0) list[idx] = entry; else list.Add(entry);
+                await WriteArrayAsync(arrayKey, list);
+            }, "push " + state.Category + " " + id);
+        }
+
+        public void DeleteElement(ElementCategory category, string id)
         {
-            await _gate.WaitAsync();
-            try
+            if (!_handlers.TryGetValue(category, out IFamilyHandler handler))
+                return;
+
+            string arrayKey = handler.ArrayKey;
+
+            FireAndForget(async () =>
             {
-                await action();
-                Log.Info($"Pushed to Firestore: {what}.");
-            }
-            catch (Exception ex)
+                List<object> list = await ReadArrayAsync(arrayKey);
+                int removed = list.RemoveAll(m => IdOf(m) == id);
+                if (removed > 0)
+                    await WriteArrayAsync(arrayKey, list);
+            }, "delete " + category + " " + id);
+        }
+
+        // ---- internals ------------------------------------------------------
+
+        private async Task<List<object>> ReadArrayAsync(string arrayKey)
+        {
+            JObject doc = await _connection.GetDocumentAsync(
+                Config.CollectionId, Config.DocumentId);
+
+            JObject fields = doc["fields"] as JObject;
+            if (fields == null)
+                return new List<object>();
+
+            JObject fieldValue = fields[arrayKey] as JObject;
+            if (fieldValue == null)
+                return new List<object>();
+
+            JArray values = fieldValue["arrayValue"]?["values"] as JArray;
+            if (values == null)
+                return new List<object>();
+
+            var list = new List<object>();
+            foreach (JToken item in values)
+                list.Add(ParseMapValue(item as JObject));
+            return list;
+        }
+
+        private async Task WriteArrayAsync(string arrayKey, List<object> list)
+        {
+            string operationId = Guid.NewGuid().ToString();
+            WriteTracker.Remember(operationId);
+
+            var update = new Dictionary<string, object>
             {
-                Log.Error($"Firestore write failed ({what})", ex);
-            }
-            finally
+                [arrayKey] = list,
+                ["writerInstanceId"] = Config.WriterInstanceId,
+                ["writerOperationId"] = operationId,
+                ["updatedAtUtc"] = DateTime.UtcNow.ToString("o"),
+                ["schemaVersion"] = Config.SchemaVersion,
+            };
+
+            await _connection.SetDocumentAsync(Config.CollectionId, Config.DocumentId, update);
+        }
+
+        private static string IdOf(object item)
+        {
+            if (item is IReadOnlyDictionary<string, object> m && m.TryGetValue("id", out object v))
+                return v as string;
+            return null;
+        }
+
+        private static object ParseMapValue(JObject valueObj)
+        {
+            if (valueObj == null) return null;
+            if (valueObj["stringValue"] != null) return valueObj["stringValue"].Value<string>();
+            if (valueObj["integerValue"] != null) return valueObj["integerValue"].Value<long>();
+            if (valueObj["doubleValue"] != null) return valueObj["doubleValue"].Value<double>();
+            if (valueObj["booleanValue"] != null) return valueObj["booleanValue"].Value<bool>();
+            if (valueObj["nullValue"] != null) return null;
+            if (valueObj["mapValue"] != null)
             {
-                _gate.Release();
+                var mapFields = valueObj["mapValue"]["fields"] as JObject;
+                if (mapFields == null) return new Dictionary<string, object>();
+                var result = new Dictionary<string, object>();
+                foreach (var prop in mapFields.Properties())
+                    result[prop.Name] = ParseMapValue(prop.Value as JObject);
+                return result;
             }
-        });
+            if (valueObj["arrayValue"] != null)
+            {
+                var values = valueObj["arrayValue"]["values"] as JArray;
+                var list = new List<object>();
+                if (values != null)
+                    foreach (var item in values)
+                        list.Add(ParseMapValue(item as JObject));
+                return list;
+            }
+            return null;
+        }
+
+        private void FireAndForget(Func<Task> action, string what)
+        {
+            _ = Task.Run(async () =>
+            {
+                await _gate.WaitAsync();
+                try
+                {
+                    await action();
+                    Log.Info("Pushed to Firestore: " + what + ".");
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Firestore write failed (" + what + ")", ex);
+                }
+                finally
+                {
+                    _gate.Release();
+                }
+            });
+        }
     }
 }

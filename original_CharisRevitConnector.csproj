@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Revit 2027 runs on .NET 10 -->
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Produces a .deps.json so Revit can resolve add-in dependencies.
+         Not strictly needed for M0 (no third-party refs yet) but matters
+         once Firebase/gRPC arrive in M1, so we set it up now. -->
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RevitVersion>2027</RevitVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Revit 2027 API (RevitAPI.dll + RevitAPIUI.dll).
+         Reference-only: ExcludeAssets=runtime keeps these OUT of the output
+         folder, equivalent to the classic "Copy Local = false". -->
+
+    <!-- Firebase Admin credential (the "via Admin SDK" part) + Firestore client.
+         On .NET 10 Firestore uses the managed Grpc.Net.Client (no native Grpc.Core). -->
+    <PackageReference Include="FirebaseAdmin" Version="3.5.0" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="4.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2023\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Copies the built DLL + .addin manifest into the per-USER Revit 2027
+       Addins folder so the ribbon button appears on next Revit launch.
+       Revit 2027 changed the all-users path to %ProgramFiles%\Autodesk\Revit\
+       Addins\2027 (admin-only); the per-user %AppData% folder needs no admin
+       and is the right target for dev. $(AppData) = C:\Users\<you>\AppData\Roaming. -->
+  <Target Name="DeployAddin" AfterTargets="Build">
+    <PropertyGroup>
+      <RevitAddinsDir>$(AppData)\Autodesk\Revit\Addins\2027</RevitAddinsDir>
+      <!-- Dependencies (Firebase/gRPC/Google.Protobuf/...) go in their own
+           subfolder so they are isolated from Revit's loaded assemblies and
+           other add-ins. The .addin's Assembly path points into this folder;
+           EnableDynamicLoading + the .deps.json drive per-add-in resolution. -->
+      <RevitAddinBinDir>$(RevitAddinsDir)\CharisRevitConnector</RevitAddinBinDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <CharisDeployFiles Include="$(TargetDir)**\*.*" />
+    </ItemGroup>
+    <MakeDir Directories="$(RevitAddinBinDir)" />
+    <Copy SourceFiles="@(CharisDeployFiles)" DestinationFiles="@(CharisDeployFiles->'$(RevitAddinBinDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="$(ProjectDir)$(AssemblyName).addin" DestinationFolder="$(RevitAddinsDir)" SkipUnchangedFiles="false" />
+    <Message Importance="high" Text="Deployed $(AssemblyName) + dependencies -&gt; $(RevitAddinBinDir)" />
+  </Target>
+
+</Project>

@@ -1,5 +1,9 @@
 namespace CharisRevitConnector;
 
+
+//      deprecated
+
+
 /// <summary>
 /// Finds the Firebase service-account JSON without ever baking it into the
 /// assembly or the repo. Resolution order (first existing file wins):
@@ -9,25 +13,27 @@ namespace CharisRevitConnector;
 /// </summary>
 internal static class CredentialLocator
 {
-    public static string DefaultPath { get; } = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        "Charis",
-        "serviceAccount.json");
+    //public static string DefaultPath { get; } = Path.Combine(
+    //    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+    //    "Charis",
+    //    "serviceAccount.json");
+
+    public static string DefaultPath = @"C:\Users\SahaN\source\repos\InteropRRW\Revit_addin\CharisRevitConnector\interop-6425a-firebase-adminsdk-fbsvc-7685ef6c76.json";
 
     public static string? Resolve()
     {
-        string?[] candidates =
-        {
-            Environment.GetEnvironmentVariable("CHARIS_FIREBASE_CREDENTIALS"),
-            Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"),
-            DefaultPath,
-        };
+        //string?[] candidates =
+        //{
+        //    Environment.GetEnvironmentVariable("CHARIS_FIREBASE_CREDENTIALS"),
+        //    Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS"),
+        //    DefaultPath,
+        //};
 
-        foreach (string? path in candidates)
-        {
-            if (!string.IsNullOrWhiteSpace(path) && File.Exists(path))
-                return path;
-        }
+        //foreach (string? path in candidates)
+        //{
+        //    if (!string.IsNullOrWhiteSpace(path) && File.Exists(path))
+        //        return path;
+        //}
 
         return null;
     }

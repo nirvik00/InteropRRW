@@ -2,12 +2,10 @@
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>Charis Revit Connector</Name>
-    <!-- Path is relative to this manifest's folder. DeployAddin places the DLL
-         and all dependencies in the CharisRevitConnector\ subfolder. -->
-    <Assembly>CharisRevitConnector\CharisRevitConnector.dll</Assembly>
+    <Assembly>C:\Users\SahaN\source\repos\InteropRRW\Revit_addin\CharisRevitConnector\bin\x64\Debug\CharisRevitConnector.dll</Assembly>
     <FullClassName>CharisRevitConnector.App</FullClassName>
     <AddInId>67be9682-0f9d-45d9-b253-6d3736fbcd00</AddInId>
-    <VendorId>com.charis</VendorId>
-    <VendorDescription>Charis, https://github.com/vence-cai/6-charis</VendorDescription>
+    <VendorId>interop</VendorId>
+    <VendorDescription>https://github.com/nirvik00/InteropRRW</VendorDescription>
   </AddIn>
 </RevitAddIns>

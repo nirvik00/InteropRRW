@@ -1,107 +1,130 @@
-using System.Text.Json;
-using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
-using Google.Cloud.Firestore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace CharisRevitConnector;
-
-/// <summary>
-/// Summary of a successful connection: the resolved project and the root
-/// collections found by the authenticated test read.
-/// </summary>
-internal readonly record struct ConnectionInfo(string ProjectId, IReadOnlyList<string> RootCollections);
-
-/// <summary>
-/// Owns the Firestore connection. M1 responsibilities:
-///   - load the service-account credential (the "via Admin SDK" entry point),
-///   - initialize the Firebase Admin app and a FirestoreDb from that one credential,
-///   - run an authenticated test read to prove connectivity.
-/// M2 will add the realtime Listen() + ExternalEvent on top of <see cref="Db"/>.
-/// </summary>
-internal sealed class FirebaseConnection
+namespace CharisRevitConnector
 {
-    private FirestoreDb? _db;
-
-    public bool IsConnected => _db is not null;
-    public string? ProjectId { get; private set; }
-
-    /// <summary>The live Firestore client, or null when disconnected. Used by M2.</summary>
-    public FirestoreDb? Db => _db;
-
-    public async Task<ConnectionInfo> ConnectAsync()
+    public struct ConnectionInfo
     {
-        if (_db is not null)
-            return new ConnectionInfo(ProjectId!, Array.Empty<string>());
+        public string ProjectId { get; }
+        public ConnectionInfo(string projectId) { ProjectId = projectId; }
+    }
 
-        string credentialPath = CredentialLocator.Resolve()
-            ?? throw new FileNotFoundException(CredentialLocator.NotFoundMessage());
+    public sealed class FirebaseConnection
+    {
+        private static readonly HttpClient Http = new HttpClient();
+        private readonly string _credentialJsonPath;
+        private readonly string _projectId;
+        private static readonly HttpMethod Patch = new HttpMethod("PATCH");
+        private ServiceAccountCredential _credential;
 
-        // Read the key once; reuse the text for both the project id and the
-        // credential.
-        string credentialJson = await File.ReadAllTextAsync(credentialPath);
-        string projectId = ReadProjectId(credentialJson, credentialPath);
+        public string ProjectId => _projectId;
+        public bool IsConnected => _credential != null;
 
-        // The whole GoogleCredential.From* family is marked obsolete in favour
-        // of CredentialFactory, but that API's IGoogleCredential interface is
-        // internal in the Google.Apis.Auth version pulled transitively by
-        // Google.Cloud.Firestore 4.2.0 — so there is no public, non-deprecated
-        // replacement here yet. The cited risk is path/stream injection from
-        // untrusted input; our credential comes from an env var or a fixed
-        // per-user file we provision, so the warning is safely suppressed.
-        // Revisit when a newer Google.Apis.Auth exposes CredentialFactory.
-#pragma warning disable CS0618 // Type or member is obsolete
-        GoogleCredential credential = GoogleCredential.FromJson(credentialJson);
-#pragma warning restore CS0618
-
-        // Initialize the Admin SDK app from the same credential. This is the
-        // "stream via Firebase Admin SDK" requirement: one service-account
-        // credential shared between the Admin app and the Firestore client.
-        if (FirebaseApp.DefaultInstance is null)
+        public FirebaseConnection(string credentialJsonPath)
         {
-            FirebaseApp.Create(new AppOptions
+            _credentialJsonPath = credentialJsonPath;
+            var json = JObject.Parse(File.ReadAllText(credentialJsonPath));
+            _projectId = json["project_id"].Value<string>();
+        }
+
+        public async Task<ConnectionInfo> ConnectAsync()
+        {
+            var json = File.ReadAllText(_credentialJsonPath);
+            var parameters = new ServiceAccountCredential.Initializer(
+                JObject.Parse(json)["client_email"].Value<string>())
             {
-                Credential = credential,
-                ProjectId = projectId,
-            });
+                Scopes = new[] { "https://www.googleapis.com/auth/datastore" }
+            }.FromPrivateKey(JObject.Parse(json)["private_key"].Value<string>());
+
+            _credential = new ServiceAccountCredential(parameters);
+            await _credential.GetAccessTokenForRequestAsync();
+            return new ConnectionInfo(_projectId);
         }
 
-        var db = new FirestoreDbBuilder
+        public void Disconnect() { _credential = null; }
+
+        public async Task<string> GetAccessTokenAsync()
         {
-            ProjectId = projectId,
-            Credential = credential,
-        }.Build();
-
-        // Authenticated test read: list root collections. Needs no specific
-        // data to exist, so it works against a brand-new Firestore project.
-        var rootCollections = new List<string>();
-        await foreach (CollectionReference collection in db.ListRootCollectionsAsync())
-            rootCollections.Add(collection.Id);
-
-        _db = db;
-        ProjectId = projectId;
-        return new ConnectionInfo(projectId, rootCollections);
-    }
-
-    public void Disconnect()
-    {
-        // M1: drop the client reference. (M2 will also stop the listener here.)
-        // FirebaseApp.DefaultInstance is intentionally left alive so a later
-        // reconnect can reuse it without re-creating the Admin app.
-        _db = null;
-        ProjectId = null;
-    }
-
-    private static string ReadProjectId(string json, string sourcePath)
-    {
-        using JsonDocument doc = JsonDocument.Parse(json);
-        if (doc.RootElement.TryGetProperty("project_id", out JsonElement pid)
-            && pid.GetString() is { Length: > 0 } id)
-        {
-            return id;
+            return await _credential.GetAccessTokenForRequestAsync();
         }
 
-        throw new InvalidOperationException(
-            $"Service-account JSON at '{sourcePath}' has no 'project_id' field — "
-            + "is this a valid Firebase service-account key?");
+        /// <summary>Write a document via REST (SetAsync equivalent).</summary>
+        public async Task SetDocumentAsync(
+            string collection,
+            string documentId,
+            Dictionary<string, object> data,
+            CancellationToken cancellationToken = default)
+        {
+            string token = await GetAccessTokenAsync();
+            string url = $"https://firestore.googleapis.com/v1/projects/{_projectId}/databases/(default)/documents/{collection}/{documentId}";
+
+            var body = new JObject
+            {
+                ["fields"] = ToFirestoreFields(data)
+            };
+            var request = new HttpRequestMessage(Patch, new Uri(url))
+            {
+                Content = new StringContent(body.ToString(), Encoding.UTF8, "application/json")
+            };
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request, cancellationToken);
+            response.EnsureSuccessStatusCode();
+        }
+
+        /// <summary>Read a document via REST (GetSnapshotAsync equivalent).</summary>
+        public async Task<JObject> GetDocumentAsync(
+            string collection,
+            string documentId,
+            CancellationToken cancellationToken = default)
+        {
+            string token = await GetAccessTokenAsync();
+            string url = $"https://firestore.googleapis.com/v1/projects/{_projectId}/databases/(default)/documents/{collection}/{documentId}";
+
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await Http.SendAsync(request, cancellationToken);
+            response.EnsureSuccessStatusCode();
+            return JObject.Parse(await response.Content.ReadAsStringAsync());
+        }
+
+        private static JObject ToFirestoreFields(Dictionary<string, object> data)
+        {
+            var fields = new JObject();
+            foreach (var kvp in data)
+                fields[kvp.Key] = ToFirestoreValue(kvp.Value);
+            return fields;
+        }
+
+        private static JToken ToFirestoreValue(object value)
+        {
+            if (value == null) return new JObject { ["nullValue"] = JValue.CreateNull() };
+            if (value is string s) return new JObject { ["stringValue"] = s };
+            if (value is bool b) return new JObject { ["booleanValue"] = b };
+            if (value is int i) return new JObject { ["integerValue"] = i.ToString() };
+            if (value is long l) return new JObject { ["integerValue"] = l.ToString() };
+            if (value is double d) return new JObject { ["doubleValue"] = d };
+            if (value is float f) return new JObject { ["doubleValue"] = (double)f };
+            if (value is Dictionary<string, object> dict)
+                return new JObject { ["mapValue"] = new JObject { ["fields"] = ToFirestoreFields(dict) } };
+            if (value is List<object> list)
+            {
+                var arr = new JArray();
+                foreach (var item in list)
+                    arr.Add(ToFirestoreValue(item));
+                return new JObject { ["arrayValue"] = new JObject { ["values"] = arr } };
+            }
+            return new JObject { ["stringValue"] = value.ToString() };
+        }
     }
 }

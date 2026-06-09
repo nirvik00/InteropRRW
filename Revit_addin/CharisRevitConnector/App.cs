@@ -1,5 +1,10 @@
 using System.Reflection;
 using Autodesk.Revit.UI;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.IO;
+using System;
+using System.Linq;
 
 namespace CharisRevitConnector;
 
@@ -15,7 +20,9 @@ public class App : IExternalApplication
     private const string PanelName = "Firebase Stream";
 
     /// <summary>App-lifetime owner of the Firestore connection (auth + client).</summary>
-    internal static readonly FirebaseConnection Connection = new();
+    public static FirebaseConnection Connection = new FirebaseConnection(
+    @"C:\Users\SahaN\source\repos\InteropRRW\Revit_addin\CharisRevitConnector\interop-6425a-firebase-adminsdk-fbsvc-7685ef6c76.json"
+);
 
     /// <summary>One handler per element family — one Firestore collection each.</summary>
     internal static readonly IReadOnlyList<IFamilyHandler> Handlers = new IFamilyHandler[]

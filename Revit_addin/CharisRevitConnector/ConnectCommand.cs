@@ -1,6 +1,9 @@
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CharisRevitConnector;
 
@@ -27,16 +30,16 @@ public class ConnectCommand : IExternalCommand
                 return Result.Succeeded;
             }
 
-            // Connect off the Revit UI thread (network I/O + avoids deadlock).
             ConnectionInfo info = Task.Run(connection.ConnectAsync).GetAwaiter().GetResult();
 
-            // Forward: one listener on the single layered document.
-            App.Listener = new DocumentListener(connection.Db!, App.Handlers, App.SyncHandler, App.SyncEvent!);
+            App.Listener = new DocumentListener(connection, App.Handlers, App.SyncHandler, App.SyncEvent);
             App.Listener.Start();
 
-            // Reverse: push Revit edits back. Seed the registry from the active doc.
-            Document? activeDoc = commandData.Application.ActiveUIDocument?.Document;
-            var writer = new DocumentWriter(connection.Db!, App.HandlerByCategory);
+            Document activeDoc = commandData.Application.ActiveUIDocument != null
+                ? commandData.Application.ActiveUIDocument.Document
+                : null;
+
+            var writer = new DocumentWriter(connection, App.HandlerByCategory);
             App.Watcher.StartWritingTo(writer, activeDoc);
 
             // Log each family's readiness (loaded families / b-h params) to the log.
@@ -56,16 +59,16 @@ public class ConnectCommand : IExternalCommand
                 + "Firestore ⇄ Revit: floors/walls/beams/columns sync both ways.\n\n"
                 + $"Log: {Log.LogPath}");
             return Result.Succeeded;
-        }
+        } 
         catch (Exception ex)
         {
-            Exception cause = ex is AggregateException agg && agg.InnerException is not null
-                ? agg.InnerException
-                : ex;
+            Exception cause = ex;
+            while (cause.InnerException != null)
+                cause = cause.InnerException;
 
-            Log.Error("Connect failed", cause);
+            TaskDialog.Show("Connect failed",
+                cause.GetType().FullName + "\n\n" + cause.Message + "\n\n" + cause.StackTrace);
             message = cause.Message;
-            TaskDialog.Show("Charis — Connection failed", cause.Message);
             return Result.Failed;
         }
     }

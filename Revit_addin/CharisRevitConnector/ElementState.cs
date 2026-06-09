@@ -1,26 +1,64 @@
 using Autodesk.Revit.DB;
+using System.Collections.Generic;
 
-namespace CharisRevitConnector;
-
-/// <summary>
-/// Current state of a Charis-managed element, read from the model for the
-/// reverse (Revit → Firestore) sync. Lengths are in feet.
-/// </summary>
-internal sealed class ElementState
+namespace CharisRevitConnector
 {
-    public required ElementCategory Category { get; init; }
-    public required string Id { get; init; }
+    internal sealed class ElementState
+    {
+        public ElementCategory Category { get; }
+        public string Id { get; }
+        public IReadOnlyList<XYZ> Polyline { get; }
+        public LineEndpoints? Line { get; }
+        public double Thickness { get; }
+        public double Height { get; }
+        public double B { get; }
+        public double H { get; }
+        public string Material { get; }
 
-    public IReadOnlyList<XYZ>? Polyline { get; init; }
-    public (XYZ Start, XYZ End)? Line { get; init; }
+        public ElementState(
+            ElementCategory category,
+            string id,
+            IReadOnlyList<XYZ> polyline,
+            LineEndpoints? line,
+            double thickness,
+            double height,
+            double b,
+            double h,
+            string material)
+        {
+            Category = category;
+            Id = id;
+            Polyline = polyline;
+            Line = line;
+            Thickness = thickness;
+            Height = height;
+            B = b;
+            H = h;
+            Material = material;
+        }
+    }
 
-    public double Thickness { get; init; }
-    public double Height { get; init; }
-    public double B { get; init; }
-    public double H { get; init; }
+    internal struct LineEndpoints
+    {
+        public XYZ Start { get; }
+        public XYZ End { get; }
 
-    public string? Material { get; init; }
+        public LineEndpoints(XYZ start, XYZ end)
+        {
+            Start = start;
+            End = end;
+        }
+    }
+
+    internal sealed class ManagedElement
+    {
+        public ElementId ElementId { get; }
+        public ElementState State { get; }
+
+        public ManagedElement(ElementId elementId, ElementState state)
+        {
+            ElementId = elementId;
+            State = state;
+        }
+    }
 }
-
-/// <summary>A managed element paired with its read-back state (for the registry + push).</summary>
-internal readonly record struct ManagedElement(ElementId ElementId, ElementState State);

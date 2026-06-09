@@ -14,6 +14,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\PushRhinoReviewDataToFirebaseCommand.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="RhinoCommon">
       <HintPath>C:\Program Files\Rhino 8\System\netcore\RhinoCommon.dll</HintPath>
       <Private>True</Private>

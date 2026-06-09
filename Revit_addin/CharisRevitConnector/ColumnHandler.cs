@@ -1,5 +1,6 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Structure;
+using System;
 
 namespace CharisRevitConnector;
 
@@ -50,19 +51,27 @@ internal sealed class ColumnHandler : LineMemberHandler
         }
     }
 
-    protected override (XYZ Start, XYZ End)? ReadEndpoints(FamilyInstance instance, Level level)
+    protected override Tuple<XYZ, XYZ> ReadEndpoints(FamilyInstance instance, Level level)
     {
-        if (instance.Location is not LocationPoint lp)
+        LocationPoint lp = instance.Location as LocationPoint;
+        if (lp == null)
             return null;
 
         Document doc = instance.Document;
-        double baseElev = LevelElevation(doc, instance, BuiltInParameter.FAMILY_BASE_LEVEL_PARAM)
-                          + (instance.get_Parameter(BuiltInParameter.FAMILY_BASE_LEVEL_OFFSET_PARAM)?.AsDouble() ?? 0.0);
-        double topElev = LevelElevation(doc, instance, BuiltInParameter.FAMILY_TOP_LEVEL_PARAM)
-                         + (instance.get_Parameter(BuiltInParameter.FAMILY_TOP_LEVEL_OFFSET_PARAM)?.AsDouble() ?? 0.0);
+
+        double baseElev =
+            LevelElevation(doc, instance, BuiltInParameter.FAMILY_BASE_LEVEL_PARAM)
+            + (instance.get_Parameter(BuiltInParameter.FAMILY_BASE_LEVEL_OFFSET_PARAM)?.AsDouble() ?? 0.0);
+
+        double topElev =
+            LevelElevation(doc, instance, BuiltInParameter.FAMILY_TOP_LEVEL_PARAM)
+            + (instance.get_Parameter(BuiltInParameter.FAMILY_TOP_LEVEL_OFFSET_PARAM)?.AsDouble() ?? 0.0);
 
         XYZ xy = lp.Point;
-        return (new XYZ(xy.X, xy.Y, baseElev), new XYZ(xy.X, xy.Y, topElev));
+
+        return Tuple.Create(
+            new XYZ(xy.X, xy.Y, baseElev),
+            new XYZ(xy.X, xy.Y, topElev));
     }
 
     private static void SetExtents(FamilyInstance column, XYZ start, XYZ end, Level level)

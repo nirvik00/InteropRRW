@@ -1,5 +1,9 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using System.Collections.Generic;
+using System;
+using System.Linq;
+
 
 namespace CharisRevitConnector;
 
@@ -56,17 +60,24 @@ internal sealed class SyncEventHandler : IExternalEventHandler
             {
                 // Phase 1 — create/update everything present.
                 var desiredByCategory = new Dictionary<ElementCategory, HashSet<string>>();
-                foreach ((ElementCategory category, IFamilyHandler handler) in _handlers)
+                foreach (var pair in _handlers)
                 {
-                    List<ElementUpdate> desired = snapshot.TryGetValue(category, out List<ElementUpdate>? d)
-                        ? d : new List<ElementUpdate>();
+                    ElementCategory category = pair.Key;
+                    IFamilyHandler handler = pair.Value;
+
+                    List<ElementUpdate> desired =
+                        snapshot.TryGetValue(category, out List<ElementUpdate> d)
+                            ? d
+                            : new List<ElementUpdate>();
 
                     var desiredIds = new HashSet<string>();
+
                     foreach (ElementUpdate u in desired)
                     {
                         desiredIds.Add(u.Id);
                         handler.CreateOrUpdate(doc, u);
                     }
+
                     desiredByCategory[category] = desiredIds;
                 }
 
@@ -75,9 +86,13 @@ internal sealed class SyncEventHandler : IExternalEventHandler
                 doc.Regenerate();
 
                 // Phase 2 — delete-on-absence: managed but no longer in the document.
-                foreach ((ElementCategory category, IFamilyHandler handler) in _handlers)
+                foreach (var pair in _handlers)
                 {
+                    ElementCategory category = pair.Key;
+                    IFamilyHandler handler = pair.Value;
+
                     HashSet<string> desiredIds = desiredByCategory[category];
+
                     foreach (ManagedElement me in handler.ReadAll(doc).ToList())
                     {
                         if (!desiredIds.Contains(me.State.Id))
